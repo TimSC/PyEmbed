@@ -9,7 +9,7 @@ typedef int (__cdecl *MYPROC)(const char *);
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	HMODULE mod = LoadLibrary(L"Python27.dll");
+	/*HMODULE mod = LoadLibrary(L"Python27.dll");
 	//HMODULE mod2 = LoadLibrary(L"../site-packages/PIL/_imaging.pyd");
 	assert(mod != NULL);
    
@@ -17,13 +17,13 @@ int _tmain(int argc, _TCHAR* argv[])
 	MYPROC PyRun_SimpleString = (MYPROC)GetProcAddress(mod, "PyRun_SimpleString");
 	FARPROC Py_Finalize = (FARPROC)GetProcAddress(mod, "Py_Finalize");
 	FARPROC PyErr_Print = (FARPROC)GetProcAddress(mod, "PyErr_Print");
-	assert(NULL != Py_Initialize);
+	assert(NULL != Py_Initialize);*/
 
-	(Py_Initialize) ();
+	Py_Initialize ();
 
-	(PyRun_SimpleString)(
+	PyRun_SimpleString(
 		"import sys, os\n"
-		"sys.path = ['../site-packages','../python-lib']\n"
+		//"sys.path = ['../site-packages','../python-lib']\n"
 		//"print os.getcwd()\n"
 		//"from time import time,ctime\n"
 		//"import sys\n"
@@ -39,11 +39,12 @@ int _tmain(int argc, _TCHAR* argv[])
 		"import numpy as np\n"
 		"a = np.array([[1,2],[3,4]])\n"
 		"print 'Numpy test:', a.sum()\n"
+		"import wx\n"
 		);
-	(PyErr_Print)();
-	(Py_Finalize)();
+	PyErr_Print();
+	Py_Finalize();
 
-	BOOL fFreeResult = FreeLibrary(mod); 
+	//BOOL fFreeResult = FreeLibrary(mod); 
 
 	return 0;
 }
