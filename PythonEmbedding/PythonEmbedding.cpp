@@ -41,6 +41,10 @@ int _tmain(int argc, _TCHAR* argv[])
 		"print 'Numpy test:', a.sum()\n"
 		//"import wx\n"
 		"import scipy.optimize\n"
+		"from scipy.optimize import minimize, rosen, rosen_der\n"
+		"x0 = [1.3, 0.7, 0.8, 1.9, 1.2]\n"
+		"res = minimize(rosen, x0, method='Nelder-Mead')\n"
+		"print res.x\n"
 		);
 	PyErr_Print();
 	Py_Finalize();
