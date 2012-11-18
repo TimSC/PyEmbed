@@ -23,7 +23,7 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	PyRun_SimpleString(
 		"import sys, os\n"
-		//"sys.path = ['../site-packages','../python-lib']\n"
+		"sys.path = ['../site-packages','../python-lib']\n"
 		//"print os.getcwd()\n"
 		//"from time import time,ctime\n"
 		//"import sys\n"
@@ -39,7 +39,8 @@ int _tmain(int argc, _TCHAR* argv[])
 		"import numpy as np\n"
 		"a = np.array([[1,2],[3,4]])\n"
 		"print 'Numpy test:', a.sum()\n"
-		"import wx\n"
+		//"import wx\n"
+		"import scipy.optimize\n"
 		);
 	PyErr_Print();
 	Py_Finalize();
