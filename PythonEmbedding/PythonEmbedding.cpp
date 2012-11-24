@@ -22,8 +22,10 @@ int _tmain(int argc, _TCHAR* argv[])
 	Py_Initialize ();
 
 	PyRun_SimpleString(
-		"import sys, os\n"
-		"sys.path = ['../site-packages','../python-lib']\n"
+		"import sys, os, traceback, platform\n"
+		"print platform.architecture()\n"
+		"print('%x' % sys.maxsize, sys.maxsize > 2**32)\n"
+		"sys.path = ['../site-packages','../python-lib','../python-lib/lib-tk','../site-packages/wx-2.9.4-msw']\n"
 		//"print os.getcwd()\n"
 		//"from time import time,ctime\n"
 		//"import sys\n"
@@ -39,12 +41,22 @@ int _tmain(int argc, _TCHAR* argv[])
 		"import numpy as np\n"
 		"a = np.array([[1,2],[3,4]])\n"
 		"print 'Numpy test:', a.sum()\n"
-		//"import wx\n"
+		//"def test():\n"
+		//"\ttry:\n"
+		//"\t\timport wx\n"
+		//"\texcept:\n"
+		//"\t\ttraceback.print_exc(file=sys.stdout)\n"
+		//"test()\n"
 		"import scipy.optimize\n"
 		"from scipy.optimize import minimize, rosen, rosen_der\n"
 		"x0 = [1.3, 0.7, 0.8, 1.9, 1.2]\n"
 		"res = minimize(rosen, x0, method='Nelder-Mead')\n"
 		"print res.x\n"
+		"import matplotlib.pyplot as plt\n"
+		"plt.plot([1,3,2,3])\n"
+		"import pyglet\n"
+		"import pyglet.media.avbin\n"
+		"plt.show()\n"
 		);
 	PyErr_Print();
 	Py_Finalize();
